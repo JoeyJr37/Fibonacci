@@ -16,18 +16,22 @@ end
 # 2. Now write another method #fibs_rec which solves the same problem recursively. 
 # This can be done in just 3 lines (or 1 if you’re crazy, but don’t consider either of these lengths a requirement… just get it done).
 
-def fibs_rec(upto_number)
-    results = []
+
+def fibs_rec(array, upto_number)
     if upto_number == 1
-        results.push(0) 
+        array.push(0)
     elsif upto_number == 2
-        results.push(0).push(1)
-    else  
-        fibs_rec(upto_number - 2)
+        fibs_rec(array, 1)
+        array.push(1)
+    else
+        fibs_rec(array, upto_number - 1)
+        array.push(array[upto_number - 3] + array[upto_number - 2])
     end
 end
 
-p fibs_rec(2)
-        
+p fibs_rec([], 8)
+p fibs_rec([], 10)
+        # => [0, 1, 1, 2, 3, 5, 8, 13]
+        # => [0, 1, 1, 2, 3, 5, 8, 13, 21]
 
 
